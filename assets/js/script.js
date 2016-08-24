@@ -12,7 +12,8 @@
         var arr = []
         var aryKeyValue = [];
         var arrKeyValuePair=[];
-                init();
+                
+        publish();
                
         function init(){
             arrKeyValuePair=[];
@@ -43,7 +44,8 @@
                         sortArray(arrKeyValuePair,arr[i],num);
                          
                     }
-                    publish(arrKeyValuePair);
+                    return arrKeyValuePair;
+                    //publish(arrKeyValuePair);
                    // printArray(arrKeyValuePair);
                 }
            // get random columns 	
@@ -161,14 +163,15 @@
              return  arrKeyValuePair;
               
             }
-        function publish(aryKeyValue) {
+        function publish() {
         var res =0 ;
         var value=0;
         var key =0;
         var rownum=0;
+        var aryKeyValue =[];
         for(var j =1;j<=12;j++){
+        aryKeyValue=  init();
         var table = document.getElementById("table"+j);
-
             for(var i=0;i<aryKeyValue.length;i++){
                 res = aryKeyValue[i].split(":");
                 key=res[0];
@@ -223,7 +226,7 @@
             	 
                 $('#newCard').click(function(){
                     clear();
-                    init();
+                    publish();
                 });
 
                 $('#printBut').click(function(){
