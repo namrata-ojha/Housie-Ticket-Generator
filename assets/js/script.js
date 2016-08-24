@@ -1,7 +1,8 @@
         $(document).ready(function(){
                
         var count =0;
-        var baseArrayNew = new Array(0,9,19,29,39,49,59,69,79,90,90);
+        var baseArrayNew = new Array(0,9,19,29,39,49,59,69,79,90);
+        var baseArrayStart = new Array(0,1,10,20,30,40,50,60,70,80);
         var number = 0;               
         var base = 0;
         var selectRow=0 ;
@@ -75,25 +76,23 @@
              }
              //get random nuumber for respective column
         function getRandomNum(i){
+          var start =0;
                     if(i>10){
                             // convert number to a string, then extract the first digit
                     var one = String(i).charAt(1);
                     // convert the first digit back to an integer
                     newNo =Number(one); 
-                     j =newNo ;
-                    base = (baseArrayNew[j]);    
-                    console.log("base"+base);   
+                     j =newNo ;  
                            }
                     else{
                         j = i ;
-                         base = (baseArrayNew[j]);
-                    }
+                        }
+                     base = (baseArrayNew[j]);
+                     start =  baseArrayStart[j];
                     //return Math.floor(Math.random() * (max - min + 1)) + min;
-
-                     number = Math.floor(Math.random() * (base-(base-9) + 1)) + base-9;
-                     if (number==0){
-                      return 1;
-                     }
+                    
+                    number = Math.floor(Math.random() * (base-start + 1)) + start;
+                    
                    //number = base + Math.floor(Math.random()*9)+1;
                     return   number;      
                         }
