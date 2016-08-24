@@ -1,7 +1,7 @@
         $(document).ready(function(){
                
         var count =0;
-        var baseArray = new Array(0,0,0,1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9);
+        var baseArrayNew = new Array(0,9,19,29,39,49,59,69,79,90,90);
         var number = 0;               
         var base = 0;
         var selectRow=0 ;
@@ -80,14 +80,21 @@
                     var one = String(i).charAt(1);
                     // convert the first digit back to an integer
                     newNo =Number(one); 
-                     j =newNo*3 ;
-                    base = (baseArray[j] * 10)-10;       
+                     j =newNo ;
+                    base = (baseArrayNew[j]);    
+                    console.log("base"+base);   
                            }
                     else{
-                        j = i*3 ;
-                         base = (baseArray[j] * 10)-10;
+                        j = i ;
+                         base = (baseArrayNew[j]);
                     }
-                    number = base + Math.floor(Math.random()*9)+1;
+                    //return Math.floor(Math.random() * (max - min + 1)) + min;
+
+                     number = Math.floor(Math.random() * (base-(base-9) + 1)) + base-9;
+                     if (number==0){
+                      return 1;
+                     }
+                   //number = base + Math.floor(Math.random()*9)+1;
                     return   number;      
                         }
         //check for uniqueness                
